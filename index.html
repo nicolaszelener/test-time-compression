@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test de habla comprimida</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+
+  <!-- 1. Pantalla del experimentador -->
+  <section id="s-setup" class="screen active">
+    <p class="eyebrow">Experimentador</p>
+    <h1>Configuración de la sesión</h1>
+    <div class="form">
+      <label>Número de participante
+        <input id="in-part" type="number" min="1" step="1" autocomplete="off">
+      </label>
+      <label>Grupo del cuadrado latino
+        <select id="in-grupo">
+          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+          <option value="4">4</option><option value="5">5</option>
+        </select>
+      </label>
+      <p class="hint" id="asignacion"></p>
+      <label class="check"><input id="in-piloto" type="checkbox"> Prueba piloto</label>
+    </div>
+    <div id="resume-box" class="notice" hidden>
+      <p>Hay una sesión sin terminar de <b id="resume-who"></b> (<span id="resume-n"></span> ensayos guardados).</p>
+      <div class="row">
+        <button id="btn-resume" class="btn">Retomar</button>
+        <button id="btn-resume-dl" class="btn ghost">Descargar lo guardado</button>
+        <button id="btn-resume-discard" class="btn ghost danger">Descartar</button>
+      </div>
+    </div>
+    <div class="row">
+      <button id="btn-calib" class="btn ghost">Señal de calibración</button>
+      <button id="btn-start" class="btn" disabled>Cargando audios…</button>
+    </div>
+    <p class="hint" id="load-status"></p>
+  </section>
+
+  <!-- 2. Instrucciones -->
+  <section id="s-instr" class="screen">
+    <h1>Instrucciones</h1>
+    <div class="prose">
+      <p>En cada ensayo vas a escuchar un tono de aviso y después <b>seis palabras</b>, algunas aceleradas.</p>
+      <p>Al terminar suena una <b>señal</b>. Recién ahí podés escribir las palabras <b>en el mismo orden</b> en que las escuchaste, una por casillero.</p>
+      <p>Escribí toda palabra que reconozcas aunque tengas dudas. Si no identificaste una palabra, poné una <b>X</b> en su casillero.</p>
+      <p>Tenés hasta <span class="vr"></span> segundos para responder. Con <kbd>Enter</kbd> pasás al casillero siguiente; en el último, <kbd>Enter</kbd> envía la respuesta.</p>
+      <p id="instr-practica">Primero hay unos ensayos de práctica.</p>
+    </div>
+    <button id="btn-instr" class="btn">Comenzar</button>
+  </section>
+
+  <!-- 3. Ensayo -->
+  <section id="s-trial" class="screen">
+    <header class="trial-head">
+      <span id="t-label"></span>
+      <span id="t-progress"></span>
+    </header>
+    <div id="t-status" class="status">Presioná <b>Escuchar</b> cuando estés listo/a.</div>
+    <div class="boxes" id="boxes"></div>
+    <div class="timer"><div id="t-bar"></div></div>
+    <p class="hint center" id="t-msg">&nbsp;</p>
+    <div class="row center">
+      <button id="btn-play" class="btn">Escuchar</button>
+      <button id="btn-send" class="btn" hidden>Enviar</button>
+    </div>
+  </section>
+
+  <!-- 4. Pausa -->
+  <section id="s-pause" class="screen">
+    <h1 id="p-title">Pausa</h1>
+    <p class="big" id="p-clock"></p>
+    <p class="hint" id="p-msg">Descansá. Vas a poder seguir cuando termine el tiempo.</p>
+    <div class="row">
+      <button id="btn-continue" class="btn" disabled>Continuar</button>
+      <button id="btn-skip" class="btn ghost small">Saltar pausa (experimentador)</button>
+    </div>
+  </section>
+
+  <!-- 5. Fin -->
+  <section id="s-end" class="screen">
+    <h1>¡Terminaste!</h1>
+    <p>Gracias por participar. Avisale al experimentador.</p>
+    <div class="row">
+      <button id="btn-dl-csv" class="btn">Descargar CSV</button>
+      <button id="btn-dl-json" class="btn ghost">Descargar JSON</button>
+      <button id="btn-new" class="btn ghost">Nueva sesión</button>
+    </div>
+    <p class="hint" id="end-msg"></p>
+  </section>
+
+</main>
+<script src="config.js"></script>
+<script src="stimuli.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
