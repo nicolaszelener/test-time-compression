@@ -6,8 +6,8 @@ window.CONFIG = {
 
   bloques: 8,                 // 8 bloques x 5 ensayos = 40
   ventanaRespuesta_s: 45,     // ventana máxima de respuesta
-  pausaCorta_s: 120,          // pausa entre bloques
-  pausaLarga_s: 300,          // pausa a mitad de sesión
+  pausaCorta_s: 30,          // pausa entre bloques
+  pausaLarga_s: 150,          // pausa a mitad de sesión
   pausaLargaTrasBloque: 4,
 
   // Señal de respuesta (se genera en el navegador, en t_senal_respuesta_s del CSV = fin del archivo).
